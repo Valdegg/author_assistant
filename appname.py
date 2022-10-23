@@ -161,7 +161,7 @@ if uploaded is not None:
     text = [x for x in text if x]
     text = ' \n '.join(text)
 
-    size = min(10000,int(len(text)/20))
+    size = min(10000,int(len(text)/12))
 
     vatniðrep = []
     print(len(text))
@@ -171,6 +171,7 @@ if uploaded is not None:
 
 
         if i*size < len(text):
+
             st.text('Búið að lesa inn ' + str(int(i*size/len(text)*100)) + '% af orðunum í skjalinu ')
             vatniðrep += get_repeated_words(text[i*size:(i+1)*size])
 
@@ -178,7 +179,8 @@ if uploaded is not None:
     cmn = Counter([(x[1], x[2]) for x in orð_í_vatni if x[2] not in ['pfn','st','fs', 'stt', 'fs', 'nhm']])
 
 
-    cmn = [(x,y) for x,y in cmn.items()]
+    cmn = cmn.most_common(len(cmn))
+    #[(x,y) for x,y in cmn.items()]
 
     word2beyg = {}
     for common_word in [x for x in cmn if x[-1] > 3 ]:
