@@ -147,6 +147,7 @@ b = Bin()
 
 
 st.title("Skoðaðu hvaða orð eru oftast endurtekin í handritinu þínu til að gera það fjölbreytilegra")
+st.title(str(streamlit.__version__))
 
 uploaded = st.file_uploader("Settu inn .txt skjal með textanum hér")
 
